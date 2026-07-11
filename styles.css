@@ -263,6 +263,21 @@ body {
     border-radius: 4px;
 }
 
+.special-note {
+    display: block;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 101, 132, 0.12);
+    border-left: 4px solid var(--primary);
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+    text-align: left;
+    box-shadow: inset 0 0 10px rgba(255, 101, 132, 0.05);
+}
+
 @keyframes rotateGlow {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
