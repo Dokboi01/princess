@@ -1089,6 +1089,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // -------------------------------------------------------------------------
+    // CRYSTAL LOVE BALL GAME
+    // -------------------------------------------------------------------------
+    const crystalBall = document.getElementById('crystalBall');
+    const fortuneQuestion = document.getElementById('fortuneQuestion');
+    const askBallBtn = document.getElementById('askBallBtn');
+    const fortuneText = document.getElementById('fortuneText');
+
+    const lovePredictions = [
+        "Yes, 1000%! Adedokun loves you so much! ❤️",
+        "It is written in the stars: a proper date is coming very soon! 🌌🌹",
+        "Absolutely! (And yes, you asked him out first 😉)",
+        "The ball says: Adedokun is thinking about you right now! 💭💖",
+        "Without a doubt, you make him a better person every day! 🌟",
+        "Signs point to yes: infinite warm hugs are in your future! 🤗",
+        "Most likely, a video call is heading your way tonight! 📱💕",
+        "Yes! And Adedokun agrees with whatever you just asked! 😘",
+        "The future looks bright and full of kisses! 💋✨",
+        "Yes, but only if you promise to hold his hand forever! 🤝❤️"
+    ];
+
+    function askCrystalBall() {
+        if (!crystalBall || !fortuneText) return;
+        
+        const question = fortuneQuestion ? fortuneQuestion.value.trim() : '';
+        if (!question) {
+            fortuneText.innerText = "Ask a question first! 🤔";
+            return;
+        }
+
+        // Spin/Shake animation
+        crystalBall.style.animation = 'none';
+        void crystalBall.offsetWidth; // Trigger reflow
+        crystalBall.style.animation = 'ballShake 0.6s ease-in-out';
+
+        fortuneText.style.opacity = '0';
+
+        setTimeout(() => {
+            const randIdx = Math.floor(Math.random() * lovePredictions.length);
+            fortuneText.innerText = lovePredictions[randIdx];
+            fortuneText.style.opacity = '1';
+            
+            triggerConfetti();
+            createFloatingCelebrationHearts();
+
+            if (fortuneQuestion) fortuneQuestion.value = '';
+        }, 600);
+    }
+
+    if (askBallBtn && crystalBall) {
+        askBallBtn.addEventListener('click', askCrystalBall);
+        crystalBall.addEventListener('click', askCrystalBall);
+    }
+
     renderTimeline();
 });
 

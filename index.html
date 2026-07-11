@@ -202,6 +202,7 @@
                 <button class="game-tab-btn active" data-game="quiz">Relationship Quiz 🧠</button>
                 <button class="game-tab-btn" data-game="match">Cupid's Match 💖</button>
                 <button class="game-tab-btn" data-game="scratch">Secret Scratch Card 🌟</button>
+                <button class="game-tab-btn" data-game="fortune">Crystal Love Ball 🔮</button>
             </div>
 
             <!-- Quiz Game -->
@@ -253,6 +254,22 @@
                     </div>
                 </div>
                 <button class="btn secondary-btn btn-sm" id="resetScratchBtn">Reset Scratch Card</button>
+            </div>
+
+            <!-- Crystal Love Ball Game -->
+            <div id="game-fortune" class="game-container glass-card">
+                <h3>Crystal Love Ball 🔮</h3>
+                <p>Ask the magical crystal ball any question about us, then click the ball or the button to reveal your future prediction! ✨</p>
+                <div class="fortune-ball-container">
+                    <div class="crystal-ball" id="crystalBall">
+                        <div class="ball-glow"></div>
+                        <div class="ball-text" id="fortuneText">🔮</div>
+                    </div>
+                </div>
+                <div class="fortune-input-group">
+                    <input type="text" id="fortuneQuestion" placeholder="e.g., Will Adedokun take me on a proper date soon?">
+                    <button class="btn primary-btn btn-sm" id="askBallBtn">Ask the Ball 💝</button>
+                </div>
             </div>
         </section>
 
