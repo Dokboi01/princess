@@ -1,4 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Birthday Target Date: July 12, 2026
+    const birthdayStart = new Date('2026-07-12T00:00:00');
+
+    // -------------------------------------------------------------------------
+    // LOCK SCREEN OVERLAY SYSTEM
+    // -------------------------------------------------------------------------
+    const lockScreen = document.getElementById('birthdayLockScreen');
+    const lockDays = document.getElementById('lockDays');
+    const lockHours = document.getElementById('lockHours');
+    const lockMinutes = document.getElementById('lockMinutes');
+    const lockSeconds = document.getElementById('lockSeconds');
+
+    function updateLockCountdown() {
+        if (!lockScreen) return;
+
+        // Bypass lock for the developer preview (using query param ?preview=true)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('preview') === 'true') {
+            lockScreen.remove();
+            document.body.classList.remove('locked');
+            return;
+        }
+
+        const now = new Date();
+        const diff = birthdayStart - now;
+
+        if (diff <= 0) {
+            // Unlock animation!
+            lockScreen.classList.add('unlocked-fade');
+            document.body.classList.remove('locked');
+            setTimeout(() => {
+                lockScreen.remove();
+            }, 800);
+            
+            // Celebration confetti when unlocked
+            setTimeout(() => {
+                if (typeof triggerConfetti === 'function') triggerConfetti();
+                if (typeof createFloatingCelebrationHearts === 'function') createFloatingCelebrationHearts();
+            }, 500);
+        } else {
+            document.body.classList.add('locked');
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            if (lockDays) lockDays.innerText = String(days).padStart(2, '0');
+            if (lockHours) lockHours.innerText = String(hours).padStart(2, '0');
+            if (lockMinutes) lockMinutes.innerText = String(minutes).padStart(2, '0');
+            if (lockSeconds) lockSeconds.innerText = String(seconds).padStart(2, '0');
+        }
+    }
+
+    if (lockScreen) {
+        updateLockCountdown();
+        const lockInterval = setInterval(() => {
+            const unlocked = !document.getElementById('birthdayLockScreen');
+            if (unlocked) {
+                clearInterval(lockInterval);
+            } else {
+                updateLockCountdown();
+            }
+        }, 1000);
+    }
+
     // -------------------------------------------------------------------------
     // TAB NAVIGATION
     // -------------------------------------------------------------------------
@@ -61,8 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
 
-    // Birthday starts tomorrow July 12, 2026 (local time)
-    const birthdayStart = new Date('2026-07-12T00:00:00');
     const countdownTitle = document.querySelector('.countdown-container h3');
 
     function updateCountdown() {

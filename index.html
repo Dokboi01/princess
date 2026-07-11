@@ -10,6 +10,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Birthday Lock Screen Overlay -->
+    <div id="birthdayLockScreen" class="lock-screen-overlay">
+        <div class="lock-card glass-card">
+            <span class="lock-icon">🔒💝</span>
+            <h2>Patience, My Princess! 🤫</h2>
+            <p>Adedokun built a special birthday surprise just for you, but it is locked until your birthday tomorrow!</p>
+            
+            <div class="lock-countdown" id="lockCountdown">
+                <div class="lock-time-block">
+                    <span id="lockDays">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="lock-time-block">
+                    <span id="lockHours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="lock-time-block">
+                    <span id="lockMinutes">00</span>
+                    <label>Mins</label>
+                </div>
+                <div class="lock-time-block">
+                    <span id="lockSeconds">00</span>
+                    <label>Secs</label>
+                </div>
+            </div>
+            
+            <p class="lock-footer">Come back when the timer hits zero... 🌹</p>
+        </div>
+    </div>
+
     <!-- Background Sparkles and Floating Elements -->
     <div class="particles-container" id="particlesContainer"></div>
 
