@@ -878,5 +878,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderCoupons();
+
+    // -------------------------------------------------------------------------
+    // MEMORIES SUB-TAB TOGGLE & TIMELINE GENERATOR
+    // -------------------------------------------------------------------------
+    const memToggleBtns = document.querySelectorAll('.mem-toggle-btn');
+    const subtabContents = document.querySelectorAll('.subtab-content');
+    const timelineItemsContainer = document.getElementById('timelineItems');
+
+    memToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const subtabId = btn.getAttribute('data-subtab');
+            memToggleBtns.forEach(b => b.classList.remove('active'));
+            subtabContents.forEach(sc => sc.classList.remove('active'));
+            
+            btn.classList.add('active');
+            const targetSubtab = document.getElementById(`subtab-${subtabId}`);
+            if (targetSubtab) {
+                targetSubtab.classList.add('active');
+            }
+        });
+    });
+
+    const milestones = [
+        { date: "Oct 1, 2024", title: "The Day We Met ✨", desc: "The universe brought us together, and my life changed for the better forever." },
+        { date: "Oct 14, 2024", title: "First Coffee Date ☕", desc: "A cozy coffee shop date where we talked for hours. I knew right then you were someone extremely special." },
+        { date: "Dec 2, 2024", title: "The First 'I Love You' 💖", desc: "Whispering those three magical words to each other for the first time. Sweetest milestone ever." },
+        { date: "Jan 8, 2025", title: "Chasing Sunsets 🌅", desc: "Walking hand-in-hand while watching the skies change colors. The absolute definition of happy." },
+        { date: "Jul 11, 2026", title: "Happy Birthday, My Princess! 👑", desc: "Celebrating the most beautiful girl today. Here is to making a million more magical memories together!" }
+    ];
+
+    function renderTimeline() {
+        if (!timelineItemsContainer) return;
+        timelineItemsContainer.innerHTML = '';
+
+        milestones.forEach(item => {
+            const itemEl = document.createElement('div');
+            itemEl.className = 'timeline-item';
+
+            itemEl.innerHTML = `
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">${item.date}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+            timelineItemsContainer.appendChild(itemEl);
+        });
+    }
+
+    renderTimeline();
 });
+
 

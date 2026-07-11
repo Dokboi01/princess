@@ -79,12 +79,32 @@
         <section id="memories" class="tab-content">
             <div class="section-header">
                 <h2>Our Memory Lane 📸</h2>
-                <p>Every moment spent with you is a treasure. Here are some of my favorites, and we can keep adding more!</p>
-                <button class="btn secondary-btn open-modal-btn" id="addMemoryBtn">Add a Memory 💖</button>
+                <p>Every moment spent with you is a treasure. Browse our album or view our journey timeline!</p>
+                
+                <div class="memories-toggle">
+                    <button class="mem-toggle-btn active" data-subtab="album">Photo Album 📸</button>
+                    <button class="mem-toggle-btn" data-subtab="timeline">Our Journey Timeline 📅</button>
+                </div>
             </div>
 
-            <div class="memory-grid" id="memoryGrid">
-                <!-- Loaded dynamically -->
+            <!-- Photo Album Sub-Tab -->
+            <div id="subtab-album" class="subtab-content active">
+                <div class="album-header">
+                    <button class="btn secondary-btn open-modal-btn" id="addMemoryBtn">Add a Memory 💖</button>
+                </div>
+                <div class="memory-grid" id="memoryGrid">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Timeline Sub-Tab -->
+            <div id="subtab-timeline" class="subtab-content hidden">
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-items" id="timelineItems">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
             </div>
         </section>
 
