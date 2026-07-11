@@ -817,4 +817,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     musicToggleBtn.addEventListener('click', toggleMusic);
+
+    // -------------------------------------------------------------------------
+    // LOVE COUPONS SYSTEM
+    // -------------------------------------------------------------------------
+    const couponsGrid = document.getElementById('couponsGrid');
+    
+    // Seed default coupons if not set
+    let coupons = JSON.parse(localStorage.getItem('princess_coupons')) || [
+        { id: 1, title: "Breakfast in Bed 🍳", desc: "Redeem for a delicious homemade breakfast served right to you in bed.", code: "BFAST-BED-LOVE", redeemed: false },
+        { id: 2, title: "Movie Choice Night 🎬", desc: "You get absolute control of the remote and pick whatever movie we watch (no complaints allowed!).", code: "MOVIE-NIGHT-PICK", redeemed: false },
+        { id: 3, title: "Warm Giant Hug on Demand 🤗", desc: "Good for one extra long, cozy, warm hug at any point of the day.", code: "GIANT-HUG-NOW", redeemed: false },
+        { id: 4, title: "Romantic Dinner of Choice 🍝", desc: "Redeem to choose your absolute favorite restaurant for a date night, on me.", code: "ROMANTIC-DATE-YUM", redeemed: false },
+        { id: 5, title: "One Free Massage 💆‍♀️", desc: "Enjoy a soothing, relaxing back or foot massage whenever you need it.", code: "MASSAGE-SPA-VIBE", redeemed: false },
+        { id: 6, title: "Adventure Day Pass 🗺️", desc: "We go on a custom adventure or road trip designed fully by you.", code: "ADVENTURE-GO-FUN", redeemed: false }
+    ];
+
+    function renderCoupons() {
+        if (!couponsGrid) return;
+        couponsGrid.innerHTML = '';
+        
+        coupons.forEach((coupon) => {
+            const card = document.createElement('div');
+            card.className = `coupon-card ${coupon.redeemed ? 'redeemed' : ''}`;
+            
+            card.innerHTML = `
+                <div class="coupon-badge">${coupon.redeemed ? 'Redeemed' : 'Valid'}</div>
+                <div>
+                    <h3 class="coupon-title">${coupon.title}</h3>
+                    <p class="coupon-desc">${coupon.desc}</p>
+                </div>
+                ${coupon.redeemed 
+                    ? `<div class="coupon-code">CODE: ${coupon.code}</div>` 
+                    : `<button class="btn primary-btn btn-sm claim-coupon-btn" data-id="${coupon.id}">Claim Coupon 🎟️</button>`
+                }
+            `;
+            
+            couponsGrid.appendChild(card);
+        });
+
+        // Add event listeners to buttons
+        const claimBtns = couponsGrid.querySelectorAll('.claim-coupon-btn');
+        claimBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(e.target.getAttribute('data-id'));
+                claimCoupon(id);
+            });
+        });
+    }
+
+    function claimCoupon(id) {
+        const coupon = coupons.find(c => c.id === id);
+        if (coupon) {
+            coupon.redeemed = true;
+            localStorage.setItem('princess_coupons', JSON.stringify(coupons));
+            renderCoupons();
+            triggerConfetti();
+            createFloatingCelebrationHearts();
+        }
+    }
+
+    renderCoupons();
 });
+

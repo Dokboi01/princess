@@ -1006,3 +1006,103 @@ body {
         align-items: stretch;
     }
 }
+
+/* Coupon Section */
+.coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.coupon-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px dashed rgba(255, 101, 132, 0.4);
+    border-radius: 15px;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition-smooth);
+    min-height: 200px;
+    box-shadow: var(--shadow-premium);
+}
+
+.coupon-card::before, .coupon-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--bg-dark);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+.coupon-card::before { left: -10px; }
+.coupon-card::after { right: -10px; }
+
+.coupon-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255, 101, 132, 0.15);
+}
+
+.coupon-badge {
+    position: absolute;
+    top: 15px;
+    right: -25px;
+    background: var(--accent);
+    color: #111;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.2rem 2.2rem;
+    transform: rotate(45deg);
+    text-transform: uppercase;
+}
+
+.coupon-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--primary);
+}
+
+.coupon-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.coupon-code {
+    font-family: monospace;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+.coupon-card.redeemed {
+    border-color: #baffc9;
+    background: rgba(186, 255, 201, 0.04);
+}
+
+.coupon-card.redeemed .coupon-title {
+    color: #baffc9;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.coupon-card.redeemed .coupon-badge {
+    background: #baffc9;
+}
+

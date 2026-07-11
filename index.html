@@ -19,6 +19,7 @@
             <button class="nav-btn active" data-tab="home">Home</button>
             <button class="nav-btn" data-tab="memories">Memories</button>
             <button class="nav-btn" data-tab="games">Playground</button>
+            <button class="nav-btn" data-tab="coupons">Love Coupons</button>
             <button class="nav-btn" data-tab="wishwall">Wish Wall</button>
         </nav>
     </header>
@@ -83,28 +84,7 @@
             </div>
 
             <div class="memory-grid" id="memoryGrid">
-                <!-- Seeding default interactive polaroids -->
-                <div class="polaroid">
-                    <div class="polaroid-img-wrapper">
-                        <div class="placeholder-img romantic-gradient">✨ First Date ✨</div>
-                    </div>
-                    <div class="polaroid-caption">
-                        <h3>Our First Date</h3>
-                        <p class="date">October 14, 2024</p>
-                        <p class="desc">Where the magic all started. I was so nervous but you were absolutely stunning!</p>
-                    </div>
-                </div>
-
-                <div class="polaroid">
-                    <div class="polaroid-img-wrapper">
-                        <div class="placeholder-img sweet-gradient">🌅 Sunset Walk 🌅</div>
-                    </div>
-                    <div class="polaroid-caption">
-                        <h3>Beautiful Sunsets</h3>
-                        <p class="date">January 8, 2025</p>
-                        <p class="desc">Chasing sunsets together and holding your warm hand. Best feeling ever.</p>
-                    </div>
-                </div>
+                <!-- Loaded dynamically -->
             </div>
         </section>
 
@@ -170,6 +150,17 @@
                     </div>
                 </div>
                 <button class="btn secondary-btn btn-sm" id="resetScratchBtn">Reset Scratch Card</button>
+            </div>
+        </section>
+
+        <!-- LOVE COUPONS SECTION -->
+        <section id="coupons" class="tab-content">
+            <div class="section-header">
+                <h2>Love Coupons 🎟️</h2>
+                <p>Click to redeem these special coupons whenever you'd like. They are redeemable instantly!</p>
+            </div>
+            <div class="coupons-grid" id="couponsGrid">
+                <!-- Generated dynamically via JS -->
             </div>
         </section>
 
