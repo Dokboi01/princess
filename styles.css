@@ -424,6 +424,52 @@ body {
     padding: 1rem 0;
 }
 
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem 0;
+}
+
+.video-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(255, 101, 132, 0.25);
+    border-color: rgba(255, 101, 132, 0.35);
+}
+
+.video-card video {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    background: #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-caption {
+    padding: 1.2rem;
+}
+
+.video-caption h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.video-caption p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
 .polaroid {
     background: #fdfdfd;
     padding: 1rem 1rem 1.5rem;

@@ -254,6 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 imageHtml = `<img src="pics/princess1.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img romantic-gradient" style="display:none;">${mem.title} ✨</div>`;
             } else if (mem.title.includes("Video Calls")) {
                 imageHtml = `<img src="pics/princess2.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img sweet-gradient" style="display:none;">${mem.title} ✨</div>`;
+            } else if (mem.title.includes("Began")) {
+                imageHtml = `<img src="pics/princess3.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img custom-gradient" style="display:none;">${mem.title} ✨</div>`;
             } else {
                 const grad = mem.gradientClass || 'custom-gradient';
                 imageHtml = `<div class="placeholder-img ${grad}">${mem.title} ✨</div>`;
