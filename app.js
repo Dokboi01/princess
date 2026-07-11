@@ -1149,6 +1149,77 @@ document.addEventListener('DOMContentLoaded', () => {
         crystalBall.addEventListener('click', askCrystalBall);
     }
 
+    // -------------------------------------------------------------------------
+    // TRUTH OR DARE GAME
+    // -------------------------------------------------------------------------
+    const truthBtn = document.getElementById('truthBtn');
+    const dareBtn = document.getElementById('dareBtn');
+    const truthDareText = document.getElementById('truthDareText');
+
+    const relationshipTruths = [
+        "What is your absolute favorite physical feature of mine? 💖",
+        "If we could go on our first proper date right now, what would your dream outfit for me be? 👗",
+        "What is a secret nickname you've wanted to call me but haven't yet? 🤫",
+        "When was the exact moment you realized you had fallen for me? 💘",
+        "What is the sweetest thing I've ever done for you on video call? 📞🥰",
+        "If we had 24 hours alone in person right now, what would we spend it doing? 👀❤️",
+        "What is one thing about me that always makes you blush? 😳",
+        "What is your favorite memory of us from these past 4 years? 🗓️✨",
+        "If you could steal one item of clothing from my wardrobe, what would it be? 👕",
+        "What is the biggest thing you appreciate about how I treat you? 🌸"
+    ];
+
+    const relationshipDares = [
+        "Send me a 10-second voice note saying the sweetest thing you can think of! 🎙️😍",
+        "Send me a quick selfie right now showing your best kissy face! 💋",
+        "Text me: 'I'm dating a jobless graduate and he's still the love of my life!' 😂",
+        "Give your phone screen a kiss right now (imagine it's me!). 😘",
+        "Text me your absolute favorite photo of me and tell me why you love it. 📸❤️",
+        "Send me a voice message singing 15 seconds of your favorite love song! 🎵",
+        "Look at my picture on the front page and text me the first 3 words that come to your mind. 💭",
+        "Send me a selfie of you wearing your absolute favorite outfit. 👗",
+        "Voice call me right now and tell me a secret you've never told me before. 📞🔒",
+        "Send me a screenshot of your note '1000 reasons why I love Adedokun'! 😉📝"
+    ];
+
+    let lastTruthIdx = -1;
+    let lastDareIdx = -1;
+
+    function getNewPrompt(type) {
+        if (!truthDareText) return;
+        
+        const list = type === 'truth' ? relationshipTruths : relationshipDares;
+        let lastIdx = type === 'truth' ? lastTruthIdx : lastDareIdx;
+        let randIdx;
+
+        do {
+            randIdx = Math.floor(Math.random() * list.length);
+        } while (randIdx === lastIdx && list.length > 1);
+
+        if (type === 'truth') lastTruthIdx = randIdx;
+        else lastDareIdx = randIdx;
+
+        truthDareText.style.opacity = '0';
+        truthDareText.style.transform = 'scale(0.95)';
+
+        setTimeout(() => {
+            const prefix = type === 'truth' ? '😇 TRUTH' : '😈 DARE';
+            const color = type === 'truth' ? 'var(--primary)' : 'var(--accent)';
+            truthDareText.innerHTML = `<span style="font-weight: bold; color: ${color}; font-family: var(--font-fancy); font-size: 1.3rem;">${prefix}</span><br><br>"${list[randIdx]}"`;
+            
+            truthDareText.style.opacity = '1';
+            truthDareText.style.transform = 'scale(1)';
+
+            triggerConfetti();
+            createFloatingCelebrationHearts();
+        }, 300);
+    }
+
+    if (truthBtn && dareBtn) {
+        truthBtn.addEventListener('click', () => getNewPrompt('truth'));
+        dareBtn.addEventListener('click', () => getNewPrompt('dare'));
+    }
+
     renderTimeline();
 });
 
