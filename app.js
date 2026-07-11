@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Birthday Target Date: July 12, 2026
     const birthdayStart = new Date('2026-07-12T00:00:00');
 
+    // Automatically clear old local storage seeds once to force load new images & coupons
+    if (!localStorage.getItem('princess_cache_v3')) {
+        localStorage.removeItem('princess_memories');
+        localStorage.removeItem('princess_coupons');
+        localStorage.setItem('princess_cache_v3', 'true');
+    }
+
     // -------------------------------------------------------------------------
     // LOCK SCREEN OVERLAY SYSTEM
     // -------------------------------------------------------------------------
