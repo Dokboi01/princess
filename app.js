@@ -908,15 +908,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------------------
     const couponsGrid = document.getElementById('couponsGrid');
     
-    // Seed default coupons if not set
-    let coupons = JSON.parse(localStorage.getItem('princess_coupons')) || [
-        { id: 1, title: "Breakfast in Bed 🍳", desc: "Redeem for a delicious homemade breakfast served right to you in bed.", code: "BFAST-BED-LOVE", redeemed: false },
-        { id: 2, title: "Movie Choice Night 🎬", desc: "You get absolute control of the remote and pick whatever movie we watch (no complaints allowed!).", code: "MOVIE-NIGHT-PICK", redeemed: false },
-        { id: 3, title: "Warm Giant Hug on Demand 🤗", desc: "Good for one extra long, cozy, warm hug at any point of the day.", code: "GIANT-HUG-NOW", redeemed: false },
-        { id: 4, title: "Our First Proper Real Date! 🌹", desc: "Redeem to go on our first ever officially proper date in person, to anywhere you want. No excuses, on me!", code: "PROPER-DATE-FINALLY", redeemed: false },
-        { id: 5, title: "One Free Massage 💆‍♀️", desc: "Enjoy a soothing, relaxing back or foot massage whenever you need it.", code: "MASSAGE-SPA-VIBE", redeemed: false },
-        { id: 6, title: "Adventure Day Pass 🗺️", desc: "We go on a custom adventure or road trip designed fully by you.", code: "ADVENTURE-GO-FUN", redeemed: false }
-    ];
+    // Seed default coupons if not set (or if we need to add the new Lade's Vogue coupon)
+    let coupons = JSON.parse(localStorage.getItem('princess_coupons')) || [];
+    if (coupons.length < 7) {
+        coupons = [
+            { id: 1, title: "Breakfast in Bed 🍳", desc: "Redeem for a delicious homemade breakfast served right to you in bed.", code: "BFAST-BED-LOVE", redeemed: false },
+            { id: 2, title: "Movie Choice Night 🎬", desc: "You get absolute control of the remote and pick whatever movie we watch (no complaints allowed!).", code: "MOVIE-NIGHT-PICK", redeemed: false },
+            { id: 3, title: "Warm Giant Hug on Demand 🤗", desc: "Good for one extra long, cozy, warm hug at any point of the day.", code: "GIANT-HUG-NOW", redeemed: false },
+            { id: 4, title: "Our First Proper Real Date! 🌹", desc: "Redeem to go on our first ever officially proper date in person, to anywhere you want. No excuses, on me!", code: "PROPER-DATE-FINALLY", redeemed: false },
+            { id: 5, title: "One Free Massage 💆‍♀️", desc: "Enjoy a soothing, relaxing back or foot massage whenever you need it.", code: "MASSAGE-SPA-VIBE", redeemed: false },
+            { id: 6, title: "Adventure Day Pass 🗺️", desc: "We go on a custom adventure or road trip designed fully by you.", code: "ADVENTURE-GO-FUN", redeemed: false },
+            { id: 7, title: "Lade's Vogue Shopping Spree! 👗🛍️", desc: "A blank check to clear your cart at your business, fully funded by your favorite 'jobless' graduate (redeemable immediately as soon as he gets a job! 😂)", code: "JOBLESS-GRADUATE-PAYDAY", redeemed: false }
+        ];
+        localStorage.setItem('princess_coupons', JSON.stringify(coupons));
+    }
 
     function renderCoupons() {
         if (!couponsGrid) return;
@@ -992,6 +997,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { date: "3 Years Ago", title: "Finally, You 🏡✨", desc: "Two years of knowing you, one year of dating, and we finally saw each other in person for the first time at my cousin's place. Seeing you walk in was magical—my heart was racing, and you were more breathtaking than any screen could show." },
         { date: "2.5 Years Ago", title: "Stronger Together 💪❤️", desc: "After walking through some tough storms and breakups, we chose each other all over again. We realized that no matter the distance or the ups and downs, life just doesn't make sense without each other." },
         { date: "Every Day", title: "Our Little Digital World 📱💞", desc: "No proper date yet (I know, I know! 😅), but hours and hours of nightly video calls where we talked about everything and nothing. Our screens kept us inseparable, bridging every single mile." },
+        { date: "Recently", title: "Lade's Vogue is Born! 👗✨", desc: "You launched your clothing business! I remember encouraging you to start it, and watching you turn that idea into reality has made me so incredibly proud of how far you've come. (Even if you're dating a jobless graduate! 😂)" },
         { date: "1 Year Ago", title: "Building Our Dreams 💭🏡", desc: "A late-night call where we spent hours planning our future home, our first real date, and all the places we'll travel. The distance felt like nothing that night because our hearts were in the same place." },
         { date: "Present Day", title: "Perfect Imperfection ⚓", desc: "Almost 4 years of us. We've had our ups and downs, broke up more times than we can count, but we always find our way back home. You make me a better person every single day, even when you don't realize it." },
         { date: "Jul 11, 2026", title: "Happy Birthday, My Princess! 👑🎂", desc: "Celebrating the most stunning, caring, and wonderful girl today. Here's to a million more video calls, our first official date very soon, and loving you forever!" }
