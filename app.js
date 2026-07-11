@@ -921,9 +921,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const milestones = [
         { date: "5 Years Ago", title: "The Spark 🎓", desc: "We met through our friend Kunle back in my 100lvl days. At first, we were just friends, laughing at silly things—completely unaware that the universe was plotting to make you my entire world." },
+        { date: "4.5 Years Ago", title: "The 6-Hour Call 📞✨", desc: "Our casual chats turned into a 6-hour video call that lasted until the sun came up. We talked about absolutely everything, and that night, I fell asleep smiling, knowing you were special." },
         { date: "4 Years Ago", title: "The Confession (Your Secret!) 🤫💖", desc: "After a year of friendship, we officially started dating. You asked me out, and even though you deny it to this day, it remains the absolute best thing that ever happened to me!" },
         { date: "3 Years Ago", title: "Finally, You 🏡✨", desc: "Two years of knowing you, one year of dating, and we finally saw each other in person for the first time at my cousin's place. Seeing you walk in was magical—my heart was racing, and you were more breathtaking than any screen could show." },
+        { date: "2.5 Years Ago", title: "Stronger Together 💪❤️", desc: "After walking through some tough storms and breakups, we chose each other all over again. We realized that no matter the distance or the ups and downs, life just doesn't make sense without each other." },
         { date: "Every Day", title: "Our Little Digital World 📱💞", desc: "No proper date yet (I know, I know! 😅), but hours and hours of nightly video calls where we talked about everything and nothing. Our screens kept us inseparable, bridging every single mile." },
+        { date: "1 Year Ago", title: "Building Our Dreams 💭🏡", desc: "A late-night call where we spent hours planning our future home, our first real date, and all the places we'll travel. The distance felt like nothing that night because our hearts were in the same place." },
         { date: "Present Day", title: "Perfect Imperfection ⚓", desc: "Almost 4 years of us. We've had our ups and downs, broke up more times than we can count, but we always find our way back home. You make me a better person every single day, even when you don't realize it." },
         { date: "Jul 11, 2026", title: "Happy Birthday, My Princess! 👑🎂", desc: "Celebrating the most stunning, caring, and wonderful girl today. Here's to a million more video calls, our first official date very soon, and loving you forever!" }
     ];
