@@ -1407,4 +1407,93 @@ body {
     margin-bottom: 0.3rem;
 }
 
+.chapters-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chapter-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: var(--transition-smooth);
+}
+
+.chapter-card:hover {
+    border-color: rgba(255, 101, 132, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 101, 132, 0.1);
+}
+
+.active-chapter {
+    border-color: rgba(255, 101, 132, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(255, 101, 132, 0.15) !important;
+}
+
+.chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 0.3s ease;
+}
+
+.chapter-header:hover {
+    background: rgba(255, 101, 132, 0.05);
+}
+
+.chapter-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-family: var(--font-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+.chapter-toggle {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.chapter-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.3s ease-out;
+}
+
+.reasons-list {
+    margin: 1.5rem 0 0 1.5rem;
+    padding: 0;
+}
+
+.reasons-list li {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.reasons-list li::marker {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 

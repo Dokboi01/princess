@@ -998,6 +998,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // -------------------------------------------------------------------------
+    // 100 REASONS ACCORDION SYSTEM
+    // -------------------------------------------------------------------------
+    const chapterHeaders = document.querySelectorAll('.chapter-header');
+    chapterHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const card = header.parentElement;
+            const content = card.querySelector('.chapter-content');
+            const toggleSpan = header.querySelector('.chapter-toggle');
+            
+            const isHidden = content.classList.contains('hidden');
+            
+            // Close all first
+            document.querySelectorAll('.chapter-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.chapter-toggle').forEach(s => s.innerText = '＋');
+            document.querySelectorAll('.chapter-card').forEach(cc => cc.classList.remove('active-chapter'));
+            
+            if (isHidden) {
+                content.classList.remove('hidden');
+                toggleSpan.innerText = '－';
+                card.classList.add('active-chapter');
+                triggerConfetti();
+                createFloatingCelebrationHearts();
+            }
+        });
+    });
+
     renderTimeline();
 });
 
