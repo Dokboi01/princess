@@ -953,6 +953,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // -------------------------------------------------------------------------
+    // REASONS ADEDOKUN LOVES PRINCESS
+    // -------------------------------------------------------------------------
+    const reasons = [
+        "The way you ask me out and then deny it forever! 😂",
+        "How you make me a better person every single day, even when you don't realize it. 🌟",
+        "Our endless late-night video calls that bridge every single mile between us. 📞💞",
+        "Your incredible strength and patience through all of our ups and downs. ⚓",
+        "The beautiful smile that makes my heart race, just like that first day at my cousin's house. 🏡💖",
+        "How you complain about us not having a proper date yet (I promise it is coming very soon!). 🌹",
+        "The sweet sound of your laughter echoing through my phone screen. 🎙️😍",
+        "How deeply you care for me and always keep us close, no matter the distance. 🗺️❤️",
+        "Your cute, stubborn side that I wouldn't change for anything in the world. 🧸",
+        "The fact that you wrote down 1,000 reasons to love me, when you are the ultimate reason for my happiness. 💌",
+        "How you look at me during our calls when you think I'm not paying attention. 👀💕",
+        "The way you support my dreams and believe in me, even when I doubt myself. 📈",
+        "Simply being my Princess and letting me love you. 👑❤️"
+    ];
+
+    const reasonDisplay = document.getElementById('reasonDisplay');
+    const nextReasonBtn = document.getElementById('nextReasonBtn');
+    let lastReasonIdx = -1;
+
+    if (nextReasonBtn && reasonDisplay) {
+        nextReasonBtn.addEventListener('click', () => {
+            let randIdx;
+            do {
+                randIdx = Math.floor(Math.random() * reasons.length);
+            } while (randIdx === lastReasonIdx && reasons.length > 1);
+
+            lastReasonIdx = randIdx;
+            
+            reasonDisplay.style.opacity = '0';
+            reasonDisplay.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                reasonDisplay.innerHTML = `<span class="reason-highlight">Reason #${randIdx + 1}:</span> <br> "${reasons[randIdx]}"`;
+                reasonDisplay.style.opacity = '1';
+                reasonDisplay.style.transform = 'scale(1)';
+                triggerConfetti();
+                createFloatingCelebrationHearts();
+            }, 200);
+        });
+    }
+
     renderTimeline();
 });
 

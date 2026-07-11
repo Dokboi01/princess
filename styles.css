@@ -1353,4 +1353,58 @@ body {
     }
 }
 
+.love-reasons-card {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid rgba(255, 101, 132, 0.2);
+    box-shadow: 0 10px 30px rgba(255, 101, 132, 0.08);
+}
+
+.love-reasons-card h3 {
+    font-family: var(--font-fancy);
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    background: linear-gradient(to right, #ff6584, #ffd166);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.reasons-intro {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.reason-display-container {
+    background: rgba(27, 19, 34, 0.4);
+    border: 1px dashed rgba(255, 101, 132, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.reason-display {
+    font-family: var(--font-primary);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #fff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.reason-highlight {
+    font-family: var(--font-fancy);
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+}
+
 
