@@ -242,6 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageHtml = '';
             if (mem.image) {
                 imageHtml = `<img src="${mem.image}" alt="${mem.title}">`;
+            } else if (mem.title.includes("Face-to-Face")) {
+                imageHtml = `<img src="princess1.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img romantic-gradient" style="display:none;">${mem.title} ✨</div>`;
+            } else if (mem.title.includes("Video Calls")) {
+                imageHtml = `<img src="princess2.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img sweet-gradient" style="display:none;">${mem.title} ✨</div>`;
             } else {
                 const grad = mem.gradientClass || 'custom-gradient';
                 imageHtml = `<div class="placeholder-img ${grad}">${mem.title} ✨</div>`;
