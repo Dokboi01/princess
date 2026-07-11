@@ -203,21 +203,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear all except the first two hardcoded ones (or render them all dynamically)
         // Let's replace the grid content completely with saved ones, falling back to seed if empty
         if (memories.length === 0) {
-            // Seed a couple of default ones
+            // Seed a couple of default ones matching their story
             memories = [
                 {
-                    title: 'Our First Date',
-                    date: '2024-10-14',
-                    desc: 'Where the magic all started. I was so nervous but you were absolutely stunning!',
+                    title: "First Face-to-Face Meeting 🏡",
+                    date: '2023-07-11',
+                    desc: "Almost a year after dating, we finally saw each other in person for the first time at my cousin's place. The wait was long, but seeing you made everything perfect.",
                     image: '',
                     gradientClass: 'romantic-gradient'
                 },
                 {
-                    title: 'Beautiful Sunsets',
-                    date: '2025-01-08',
-                    desc: 'Chasing sunsets together and holding your warm hand. Best feeling ever.',
+                    title: "Endless Video Calls 📱",
+                    date: '2024-05-20',
+                    desc: "Our daily routine. Even though we haven't been on a proper date yet, looking at your face through the screen makes every day brighter.",
                     image: '',
                     gradientClass: 'sweet-gradient'
+                },
+                {
+                    title: "How It All Began 🎓",
+                    date: '2022-09-15',
+                    desc: "Back in 100lvl when we met through Kunle. We started as friends, and I had no idea you'd become my whole world.",
+                    image: '',
+                    gradientClass: 'custom-gradient'
                 }
             ];
             localStorage.setItem('princess_memories', JSON.stringify(memories));
@@ -332,39 +339,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- GAME 1: RELATIONSHIP QUIZ ---
     const quizQuestions = [
         {
-            q: "Where was our very first date?",
-            a: ["Coffee shop", "An elegant park walk", "The cinema", "A romantic restaurant"],
+            q: "How many proper dates have we actually been on?",
+            a: ["None yet (and yes, I know you complain about this all the time! 😅)", "10+", "5", "Too many to count"],
             correct: 0,
-            success: "Yes! That coffee was the sweetest of my life! ☕",
-            fail: "Oops! Good guess, but it was actually at that lovely coffee shop! 😉"
+            success: "Exactly! But I promise, a perfect real date is coming very, very soon! 🌹",
+            fail: "Nope! Even though we video call all the time, we haven't had a proper in-person date yet (sorry, I know you hate this! 😭)"
         },
         {
             q: "What is my absolute favorite thing about you?",
-            a: ["Your stunning smile", "Your kind & caring heart", "Your adorable laugh", "All of the above (and infinitely more!)"],
+            a: ["Your stunning smile", "How you make me a better person", "Your adorable voice", "All of the above (and infinitely more!)"],
             correct: 3,
             success: "Exactly! I couldn't pick just one even if I tried! 🥰",
             fail: "Aww, though true, the absolute correct answer is ALL OF THE ABOVE! ❤️"
         },
         {
-            q: "Who said 'I love you' first?",
-            a: ["I did!", "You did!", "We said it at the same exact time!", "It remains a mystery..."],
-            correct: 1,
-            success: "Haha yes! I couldn't wait another second to say it! 💘",
-            fail: "Nice try! I actually blurted it out first because I was so in love! 😘"
+            q: "Who asked whom out first?",
+            a: ["She asked me out (even though she denies it!)", "I asked her out", "It was mutual", "Kunle did"],
+            correct: 0,
+            success: "Haha yes! You asked me out first, and no matter how much you deny it, it's the truth! 😉💘",
+            fail: "Nice try! But you actually asked me out, even though you always deny it! 😂"
         },
         {
-            q: "What is our favorite cozy activity together?",
-            a: ["Binge-watching shows", "Cooking up a new recipe", "Late-night drives & talking", "Cuddling up and relaxing"],
-            correct: 3,
-            success: "Yes! Being wrapped in your warm hugs is my favorite place on Earth. 🧸",
-            fail: "Though we love that, cuddling up in blankets is my absolute favorite! 🥰"
+            q: "Where was the first place we saw each other in person?",
+            a: ["At my cousin's place", "At school", "At a cafe", "At Kunle's place"],
+            correct: 0,
+            success: "Yes! Almost a year after dating, we finally met in person at my cousin's house. 🏠❤️",
+            fail: "Aww, good guess! But we actually met in person for the first time at my cousin's place! 😊"
         },
         {
-            q: "If I could take you anywhere in the world right now, where would it be?",
-            a: ["A tropical sunny beach", "A cozy cabin in the snowy mountains", "A romantic trip to Paris", "Anywhere, as long as it's with you"],
-            correct: 3,
-            success: "Yes! The place doesn't matter at all, as long as you're right by my side! ✈️💖",
-            fail: "A cozy spot indeed, but really anywhere in the universe with you is perfect! 💫"
+            q: "How long have we known each other now?",
+            a: ["Around 5 years (friends first, then dating)", "About 2 years", "Almost 4 years of dating!", "1 year"],
+            correct: 0,
+            success: "Yes! We met in 100lvl, were friends for a year, and have been dating for almost 4 years now! 💫💖",
+            fail: "Not quite! We've been dating for almost 4 years, but we met a year before that in 100lvl! 🥰"
         }
     ];
 
@@ -828,7 +835,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 1, title: "Breakfast in Bed 🍳", desc: "Redeem for a delicious homemade breakfast served right to you in bed.", code: "BFAST-BED-LOVE", redeemed: false },
         { id: 2, title: "Movie Choice Night 🎬", desc: "You get absolute control of the remote and pick whatever movie we watch (no complaints allowed!).", code: "MOVIE-NIGHT-PICK", redeemed: false },
         { id: 3, title: "Warm Giant Hug on Demand 🤗", desc: "Good for one extra long, cozy, warm hug at any point of the day.", code: "GIANT-HUG-NOW", redeemed: false },
-        { id: 4, title: "Romantic Dinner of Choice 🍝", desc: "Redeem to choose your absolute favorite restaurant for a date night, on me.", code: "ROMANTIC-DATE-YUM", redeemed: false },
+        { id: 4, title: "Our First Proper Real Date! 🌹", desc: "Redeem to go on our first ever officially proper date in person, to anywhere you want. No excuses, on me!", code: "PROPER-DATE-FINALLY", redeemed: false },
         { id: 5, title: "One Free Massage 💆‍♀️", desc: "Enjoy a soothing, relaxing back or foot massage whenever you need it.", code: "MASSAGE-SPA-VIBE", redeemed: false },
         { id: 6, title: "Adventure Day Pass 🗺️", desc: "We go on a custom adventure or road trip designed fully by you.", code: "ADVENTURE-GO-FUN", redeemed: false }
     ];
@@ -901,11 +908,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const milestones = [
-        { date: "Oct 1, 2024", title: "The Day We Met ✨", desc: "The universe brought us together, and my life changed for the better forever." },
-        { date: "Oct 14, 2024", title: "First Coffee Date ☕", desc: "A cozy coffee shop date where we talked for hours. I knew right then you were someone extremely special." },
-        { date: "Dec 2, 2024", title: "The First 'I Love You' 💖", desc: "Whispering those three magical words to each other for the first time. Sweetest milestone ever." },
-        { date: "Jan 8, 2025", title: "Chasing Sunsets 🌅", desc: "Walking hand-in-hand while watching the skies change colors. The absolute definition of happy." },
-        { date: "Jul 11, 2026", title: "Happy Birthday, My Princess! 👑", desc: "Celebrating the most beautiful girl today. Here is to making a million more magical memories together!" }
+        { date: "5 Years Ago", title: "The Spark 🎓", desc: "We met through our friend Kunle back in my 100lvl days. At first, we were just friends, laughing at silly things—completely unaware that the universe was plotting to make you my entire world." },
+        { date: "4 Years Ago", title: "The Confession (Your Secret!) 🤫💖", desc: "After a year of friendship, we officially started dating. You asked me out, and even though you deny it to this day, it remains the absolute best thing that ever happened to me!" },
+        { date: "3 Years Ago", title: "Finally, You 🏡✨", desc: "Two years of knowing you, one year of dating, and we finally saw each other in person for the first time at my cousin's place. Seeing you walk in was magical—my heart was racing, and you were more breathtaking than any screen could show." },
+        { date: "Every Day", title: "Our Little Digital World 📱💞", desc: "No proper date yet (I know, I know! 😅), but hours and hours of nightly video calls where we talked about everything and nothing. Our screens kept us inseparable, bridging every single mile." },
+        { date: "Present Day", title: "Perfect Imperfection ⚓", desc: "Almost 4 years of us. We've had our ups and downs, broke up more times than we can count, but we always find our way back home. You make me a better person every single day, even when you don't realize it." },
+        { date: "Jul 11, 2026", title: "Happy Birthday, My Princess! 👑🎂", desc: "Celebrating the most stunning, caring, and wonderful girl today. Here's to a million more video calls, our first official date very soon, and loving you forever!" }
     ];
 
     function renderTimeline() {
