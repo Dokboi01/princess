@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Princess! 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Sparkles and Floating Elements -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <header class="glass-header">
+        <div class="logo">For My Princess 👑</div>
+        <nav class="nav-links">
+            <button class="nav-btn active" data-tab="home">Home</button>
+            <button class="nav-btn" data-tab="memories">Memories</button>
+            <button class="nav-btn" data-tab="games">Playground</button>
+            <button class="nav-btn" data-tab="wishwall">Wish Wall</button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- HOME SECTION -->
+        <section id="home" class="tab-content active">
+            <div class="hero-card glass-card">
+                <div class="avatar-container">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-frame">👑</div>
+                </div>
+                <h1 class="glow-text">Happy Birthday, beautiful! ✨</h1>
+                <p class="subtitle">Today is all about celebrating the most amazing person in my world.</p>
+                
+                <div class="countdown-container">
+                    <h3>We've been celebrating you for...</h3>
+                    <div class="countdown">
+                        <div class="time-block">
+                            <span id="days">00</span>
+                            <label>Days</label>
+                        </div>
+                        <div class="time-block">
+                            <span id="hours">00</span>
+                            <label>Hours</label>
+                        </div>
+                        <div class="time-block">
+                            <span id="minutes">00</span>
+                            <label>Mins</label>
+                        </div>
+                        <div class="time-block">
+                            <span id="seconds">00</span>
+                            <label>Secs</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button id="celebrateBtn" class="btn primary-btn">
+                        <span>Tap to Celebrate! 🎉</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="love-letter glass-card">
+                <h2>A Little Note for You 💌</h2>
+                <p class="letter-text">
+                    You bring so much magic, laughter, and light into my life every single day. 
+                    I wanted to build this little corner of the internet just for you, to show you how much you mean to me. 
+                    Explore the tabs above to walk down memory lane, play some fun games I set up for us, and read some special wishes!
+                </p>
+                <div class="signature">With all my love ❤️</div>
+            </div>
+        </section>
+
+        <!-- MEMORIES SECTION -->
+        <section id="memories" class="tab-content">
+            <div class="section-header">
+                <h2>Our Memory Lane 📸</h2>
+                <p>Every moment spent with you is a treasure. Here are some of my favorites, and we can keep adding more!</p>
+                <button class="btn secondary-btn open-modal-btn" id="addMemoryBtn">Add a Memory 💖</button>
+            </div>
+
+            <div class="memory-grid" id="memoryGrid">
+                <!-- Seeding default interactive polaroids -->
+                <div class="polaroid">
+                    <div class="polaroid-img-wrapper">
+                        <div class="placeholder-img romantic-gradient">✨ First Date ✨</div>
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>Our First Date</h3>
+                        <p class="date">October 14, 2024</p>
+                        <p class="desc">Where the magic all started. I was so nervous but you were absolutely stunning!</p>
+                    </div>
+                </div>
+
+                <div class="polaroid">
+                    <div class="polaroid-img-wrapper">
+                        <div class="placeholder-img sweet-gradient">🌅 Sunset Walk 🌅</div>
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>Beautiful Sunsets</h3>
+                        <p class="date">January 8, 2025</p>
+                        <p class="desc">Chasing sunsets together and holding your warm hand. Best feeling ever.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMES SECTION -->
+        <section id="games" class="tab-content">
+            <div class="section-header">
+                <h2>The Play Zone 🎮</h2>
+                <p>Some fun little games built to make you smile today!</p>
+            </div>
+
+            <div class="games-selector">
+                <button class="game-tab-btn active" data-game="quiz">Relationship Quiz 🧠</button>
+                <button class="game-tab-btn" data-game="match">Cupid's Match 💖</button>
+                <button class="game-tab-btn" data-game="scratch">Secret Scratch Card 🌟</button>
+            </div>
+
+            <!-- Quiz Game -->
+            <div id="game-quiz" class="game-container active glass-card">
+                <div id="quiz-intro">
+                    <h3>How well do you know us? 💘</h3>
+                    <p>Answer these cute questions to see if you get a perfect match score!</p>
+                    <button class="btn primary-btn" id="startQuizBtn">Start Quiz</button>
+                </div>
+                <div id="quiz-play" class="hidden">
+                    <div class="quiz-progress">
+                        <span id="questionNum">Question 1 of 5</span>
+                        <div class="progress-bar"><div id="progressFill" style="width: 20%;"></div></div>
+                    </div>
+                    <h3 id="questionText" class="question-text">Question goes here?</h3>
+                    <div class="quiz-options" id="quizOptions">
+                        <!-- Options generated dynamically -->
+                    </div>
+                </div>
+                <div id="quiz-result" class="hidden">
+                    <h3 id="resultTitle">Quiz Finished!</h3>
+                    <p id="resultText">Your score goes here.</p>
+                    <button class="btn primary-btn" id="restartQuizBtn">Try Again</button>
+                </div>
+            </div>
+
+            <!-- Memory Match Game -->
+            <div id="game-match" class="game-container glass-card">
+                <h3>Cupid's Match Memory Card Game</h3>
+                <p>Find the matching romantic pairs in the fewest moves!</p>
+                <div class="game-stats">
+                    <span>Moves: <strong id="movesCount">0</strong></span>
+                    <button class="btn secondary-btn btn-sm" id="resetMatchBtn">Reset Game</button>
+                </div>
+                <div class="memory-board" id="memoryBoard">
+                    <!-- Cards will be generated dynamically -->
+                </div>
+            </div>
+
+            <!-- Scratch Card Game -->
+            <div id="game-scratch" class="game-container glass-card">
+                <h3>Scratch Card Surprise 🎁</h3>
+                <p>Use your mouse or finger to scratch off the silver layer and reveal your special birthday gift/message!</p>
+                <div class="scratch-canvas-container">
+                    <canvas id="scratchCanvas" width="320" height="180"></canvas>
+                    <div class="scratch-reveal-content">
+                        <h3>🎂 You Win 1000x Warm Hugs & Unlimited Kisses! 💋</h3>
+                        <p>Redeemable immediately and forever.</p>
+                    </div>
+                </div>
+                <button class="btn secondary-btn btn-sm" id="resetScratchBtn">Reset Scratch Card</button>
+            </div>
+        </section>
+
+        <!-- WISH WALL SECTION -->
+        <section id="wishwall" class="tab-content">
+            <div class="section-header">
+                <h2>Birthday Wish Wall ✨</h2>
+                <p>Post a sticky note with a sweet wish, goal, or cute thought for this new year!</p>
+                <div class="sticky-creator glass-card">
+                    <textarea id="wishText" placeholder="Write your birthday wish or message here..."></textarea>
+                    <div class="creator-footer">
+                        <div class="color-picker">
+                            <button class="color-dot active" style="background-color: #ffb3ba;" data-color="#ffb3ba"></button>
+                            <button class="color-dot" style="background-color: #baffc9;" data-color="#baffc9"></button>
+                            <button class="color-dot" style="background-color: #bae1ff;" data-color="#bae1ff"></button>
+                            <button class="color-dot" style="background-color: #ffffba;" data-color="#ffffba"></button>
+                            <button class="color-dot" style="background-color: #e8c4ff;" data-color="#e8c4ff"></button>
+                        </div>
+                        <button class="btn primary-btn" id="postWishBtn">Post note 📌</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wish-board" id="wishBoard">
+                <!-- Loaded from JS / LocalStorage -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for adding Memory -->
+    <div class="modal-overlay" id="memoryModal">
+        <div class="modal-content glass-card">
+            <h2>Add a New Memory 🌸</h2>
+            <form id="memoryForm">
+                <div class="form-group">
+                    <label for="memTitle">Title</label>
+                    <input type="text" id="memTitle" required placeholder="e.g., Cozy Coffee Date">
+                </div>
+                <div class="form-group">
+                    <label for="memDate">Date</label>
+                    <input type="date" id="memDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="memDesc">Memory Details</label>
+                    <textarea id="memDesc" required placeholder="What made this moment special?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="memImage">Upload Image (Optional)</label>
+                    <input type="file" id="memImage" accept="image/*" class="file-input">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn secondary-btn" id="cancelMemoryBtn">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Save Memory ✨</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Music Player Widget -->
+    <div class="music-widget glass-card">
+        <span class="music-icon">🎵</span>
+        <div class="music-info">
+            <span class="track-name">Sweet Melody</span>
+            <span class="track-status">Paused</span>
+        </div>
+        <button class="music-play-btn" id="musicToggleBtn">▶</button>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+    <footer class="footer">
+        <p>Made with 💖 for my Favorite Person</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
