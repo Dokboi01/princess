@@ -61,8 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
 
-    // Birthday starts today July 11, 2026 (local time)
-    const birthdayStart = new Date('2026-07-11T00:00:00');
+    // Birthday starts tomorrow July 12, 2026 (local time)
+    const birthdayStart = new Date('2026-07-12T00:00:00');
+    const countdownTitle = document.querySelector('.countdown-container h3');
 
     function updateCountdown() {
         const now = new Date();
@@ -70,7 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (diff < 0) {
             // If before birthday, count down instead
+            if (countdownTitle) {
+                countdownTitle.innerText = "Counting down to your special day... 💖";
+            }
             diff = Math.abs(diff);
+        } else {
+            if (countdownTitle) {
+                countdownTitle.innerText = "We've been celebrating you for... 🎉";
+            }
         }
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
