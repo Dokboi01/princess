@@ -270,38 +270,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const memImageInput = document.getElementById('memImage');
 
     let memories = JSON.parse(localStorage.getItem('princess_memories')) || [];
+    if (memories.length < 16) {
+        memories = [
+            { title: "First Face-to-Face Meeting 🏡", date: '2023-07-11', desc: "Almost a year after dating, we finally saw each other in person for the first time at my cousin's place. The wait was long, but seeing you made everything perfect.", image: '', gradientClass: 'romantic-gradient' },
+            { title: "Endless Video Calls 📱", date: '2024-05-20', desc: "Our daily routine. Even though we haven't been on a proper date yet, looking at your face through the screen makes every day brighter.", image: '', gradientClass: 'sweet-gradient' },
+            { title: "How It All Began 🎓", date: '2022-09-15', desc: "Back in 100lvl when we met through Kunle. We started as friends, and I had no idea you'd become my whole world.", image: '', gradientClass: 'custom-gradient' },
+            { title: "Your Radiance ✨", date: '2025-02-14', desc: "I love this picture because it shows just how bright your spirit is.", image: '', gradientClass: 'romantic-gradient' },
+            { title: "Pure Elegance 👗", date: '2025-03-20', desc: "You styling Lade's Vogue. Absolute class and beauty.", image: '', gradientClass: 'sweet-gradient' },
+            { title: "Sweet Reflection 🪞", date: '2025-04-18', desc: "A quiet moment of you looking absolutely stunning in the mirror.", image: '', gradientClass: 'custom-gradient' },
+            { title: "Captivating Eyes 👁️💖", date: '2025-05-12', desc: "One look from you in our calls, and all my stress melts away.", image: '', gradientClass: 'romantic-gradient' },
+            { title: "Charming Smile 🧸", date: '2025-06-05', desc: "Your smile is Adedokun's favorite reason to be happy.", image: '', gradientClass: 'sweet-gradient' },
+            { title: "Stunning Princess 👑", date: '2025-07-22', desc: "The absolute definition of beauty in every single frame.", image: '', gradientClass: 'custom-gradient' },
+            { title: "Graceful Moments 🌸", date: '2025-08-30', desc: "Every single photo of yours is a masterpiece of grace.", image: '', gradientClass: 'romantic-gradient' },
+            { title: "Chic & Stylish 🛍️", date: '2025-09-14', desc: "You have the absolute best style in the universe, my dressmaker.", image: '', gradientClass: 'sweet-gradient' },
+            { title: "Glowing Bright 🌟", date: '2025-10-08', desc: "You shine brighter than any star in the night sky, my love.", image: '', gradientClass: 'custom-gradient' },
+            { title: "Cute & Playful 🤪", date: '2025-11-15', desc: "I love your goofy side just as much as your elegant side.", image: '', gradientClass: 'romantic-gradient' },
+            { title: "Unconditional Love 💕", date: '2025-12-25', desc: "Just another sweet reminder of how lucky I am to be your man.", image: '', gradientClass: 'sweet-gradient' },
+            { title: "Warmth & Calm 🌅", date: '2026-01-01', desc: "You bring so much peace and quiet warmth to my chaotic life.", image: '', gradientClass: 'custom-gradient' },
+            { title: "My Forever Favorite 💖", date: '2026-02-14', desc: "The girl who holds my heart today, tomorrow, and for all time.", image: '', gradientClass: 'romantic-gradient' }
+        ];
+        localStorage.setItem('princess_memories', JSON.stringify(memories));
+    }
 
     function renderMemories() {
-        // Clear all except the first two hardcoded ones (or render them all dynamically)
-        // Let's replace the grid content completely with saved ones, falling back to seed if empty
-        if (memories.length === 0) {
-            // Seed a couple of default ones matching their story
-            memories = [
-                {
-                    title: "First Face-to-Face Meeting 🏡",
-                    date: '2023-07-11',
-                    desc: "Almost a year after dating, we finally saw each other in person for the first time at my cousin's place. The wait was long, but seeing you made everything perfect.",
-                    image: '',
-                    gradientClass: 'romantic-gradient'
-                },
-                {
-                    title: "Endless Video Calls 📱",
-                    date: '2024-05-20',
-                    desc: "Our daily routine. Even though we haven't been on a proper date yet, looking at your face through the screen makes every day brighter.",
-                    image: '',
-                    gradientClass: 'sweet-gradient'
-                },
-                {
-                    title: "How It All Began 🎓",
-                    date: '2022-09-15',
-                    desc: "Back in 100lvl when we met through Kunle. We started as friends, and I had no idea you'd become my whole world.",
-                    image: '',
-                    gradientClass: 'custom-gradient'
-                }
-            ];
-            localStorage.setItem('princess_memories', JSON.stringify(memories));
-        }
-
         memoryGrid.innerHTML = '';
         memories.forEach((mem, index) => {
             const polaroid = document.createElement('div');
@@ -314,12 +305,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageHtml = '';
             if (mem.image) {
                 imageHtml = `<img src="${mem.image}" alt="${mem.title}">`;
-            } else if (mem.title.includes("Face-to-Face")) {
-                imageHtml = `<img src="pics/princess1.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img romantic-gradient" style="display:none;">${mem.title} ✨</div>`;
-            } else if (mem.title.includes("Video Calls")) {
-                imageHtml = `<img src="pics/princess2.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img sweet-gradient" style="display:none;">${mem.title} ✨</div>`;
-            } else if (mem.title.includes("Began")) {
-                imageHtml = `<img src="pics/princess3.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img custom-gradient" style="display:none;">${mem.title} ✨</div>`;
+            } else if (index < 16) {
+                const imgNum = index + 1;
+                const grad = mem.gradientClass || 'custom-gradient';
+                imageHtml = `<img src="pics/princess${imgNum}.jpg" alt="${mem.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><div class="placeholder-img ${grad}" style="display:none;">${mem.title} ✨</div>`;
             } else {
                 const grad = mem.gradientClass || 'custom-gradient';
                 imageHtml = `<div class="placeholder-img ${grad}">${mem.title} ✨</div>`;
